@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>AI Focus Scheduler</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
+
+<style>
+
+body{
+margin:0;
+font-family:Poppins;
+background:url("baki.png") center/cover no-repeat fixed;
+color:white;
+}
+
+body::before{
+content:"";
+position:fixed;
+top:0;
+left:0;
+width:100%;
+height:100%;
+background:rgba(0,0,0,0.7);
+z-index:-1;
+}
+
+/* layout */
+
+.container{
+display:flex;
+height:100vh;
+}
+
+/* left panel */
+
+.leftPanel{
+width:60%;
+padding:30px;
+overflow:auto;
+}
+
+/* right panel */
+
+.rightPanel{
+width:40%;
+background:rgba(0,0,0,0.6);
+padding:20px;
+overflow:auto;
+}
+
+/* cards */
+
+.card{
+background:rgba(255,255,255,0.08);
+padding:20px;
+margin-bottom:15px;
+border-radius:12px;
+}
+
+/* buttons */
+
+button{
+padding:10px 16px;
+margin:5px;
+border:none;
+border-radius:6px;
+background:linear-gradient(45deg,#00c6ff,#0072ff);
+color:white;
+cursor:pointer;
+}
+
+/* tabs */
+
+.tabs button{
+background:#333;
+}
+
+.tabs button.active{
+background:#0072ff;
+}
+
+ul{
+list-style:none;
+padding:0;
+}
+
+li{
+background:rgba(0,0,0,0.5);
+margin:10px 0;
+padding:12px;
+border-radius:8px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+<!-- LEFT SIDE -->
+
+<div class="leftPanel">
+
+<h1>🔥 AI Focus Scheduler</h1>
+
+<div class="card">
+
+<h3>Generate AI Plan</h3>
+
+<button onclick="startAI()">Start AI Planner</button>
+
+</div>
+
+<div class="card">
+
+<h3>Manual Task</h3>
+
+<input id="taskName" placeholder="Task name"><br>
+
+<input type="date" id="taskDate"><br>
+
+<input type="time" id="taskTime"><br>
+
+<input type="number" id="taskDuration" placeholder="Duration minutes"><br>
+
+<button onclick="addManual()">Add Task</button>
+
+</div>
+
+<h3>Tasks</h3>
+
+<ul id="taskList"></ul>
+
+</div>
+
+<!-- RIGHT SIDE -->
+
+<div class="rightPanel">
+
+<h2>Generated Plans</h2>
+
+<div class="tabs">
+
+<button onclick="showTab('study')" id="studyTab">📚 Study</button>
+
+<button onclick="showTab('exercise')" id="exerciseTab">💪 Exercise</button>
+
+</div>
+
+<div id="studyContent">
+
+<h3>Study Plan</h3>
+
+<ul id="studyList"></ul>
+
+</div>
+
+<div id="exerciseContent" style="display:none">
+
+<h3>Exercise Plan</h3>
+
+<ul id="exerciseList"></ul>
+
+</div>
+
+</div>
+
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>
